@@ -1,0 +1,29 @@
+/*
+ *
+ * {{ properCase name }} reducer
+ *
+ */
+
+import { fromJS } from 'immutable';
+import {
+  INIT,
+  MOUNT,
+  UNMOUNT,
+} from './constants';
+
+const initialState = fromJS({});
+
+function {{ camelCase name }}Reducer(state = initialState, action) {
+  switch (action.type) {
+    case INIT:
+      return state;
+    case MOUNT:
+      return state;
+    case UNMOUNT:
+      return state;
+    default:
+      return state;
+  }
+}
+
+export default {{ camelCase name }}Reducer;
