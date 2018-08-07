@@ -42,7 +42,11 @@ defmodule Fw.MixProject do
       {:distillery, "~> 2.0-pre", override: true},
       {:ui, in_umbrella: true},
       {:nerves_network, "~> 0.3"},
-      {:shoehorn, "~> 0.2"}
+      {:nerves_network_interface, "~> 0.4"},
+      {:nerves_runtime_shell, "~> 0.1"},
+      {:shoehorn, "~> 0.3"},
+      {:httpoison, "~> 1.0"},
+      # {:dhcp_server, "~> 0.4"}
     ] ++ deps(@target)
   end
 
@@ -51,7 +55,7 @@ defmodule Fw.MixProject do
 
   defp deps(target) do
     [
-      {:nerves_runtime, "~> 0.4"}
+      {:nerves_runtime, "~> 0.6"}
     ] ++ system(target)
   end
 
