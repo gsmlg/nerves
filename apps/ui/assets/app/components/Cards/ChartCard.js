@@ -46,7 +46,8 @@ function ChartCard({ ...props }) {
               } ${
                 classes[`${statIconColor}CardStatsIcon`]}`
             }
-          />{' '}
+          />
+          {' '}
           {statLink !== undefined ? (
             <a href={statLink.href} className={classes.cardStatsLink}>
               {statLink.text}

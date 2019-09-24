@@ -11,7 +11,9 @@ import {
   ClickAwayListener,
   Hidden,
 } from '@material-ui/core';
-import { Person, Notifications, Dashboard, Search } from '@material-ui/icons';
+import {
+  Person, Notifications, Dashboard, Search,
+} from '@material-ui/icons';
 
 import { CustomInput, IconButton as SearchButton } from 'components';
 
@@ -21,6 +23,7 @@ class HeaderLinks extends React.Component {
   state = {
     open: false,
   };
+
   handleClick = () => {
     this.setState({ open: !this.state.open });
   };
@@ -28,6 +31,7 @@ class HeaderLinks extends React.Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
   render() {
     const { classes } = this.props;
     const { open } = this.state;

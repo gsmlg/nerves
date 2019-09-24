@@ -20,10 +20,14 @@ function Footer({ ...props }) {
         </div>
         <p className={classes.right}>
           <span>
-            &copy; {1900 + new Date().getYear()}{' '}
+            &copy;
+            {' '}
+            {1900 + new Date().getYear()}
+            {' '}
             <a href="http://gsmlg.org" className={classes.a}>
               GSMLG
-            </a>, made with love for a better web
+            </a>
+, made with love for a better web
           </span>
         </p>
       </div>

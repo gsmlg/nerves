@@ -40,7 +40,8 @@ function StatsCard({ ...props }) {
           component="h2"
           className={classes.cardTitle}
         >
-          {description}{' '}
+          {description}
+          {' '}
           {small !== undefined ? (
             <small className={classes.cardTitleSmall}>{small}</small>
           ) : null}
@@ -54,7 +55,8 @@ function StatsCard({ ...props }) {
               } ${
                 classes[`${statIconColor}CardStatsIcon`]}`
             }
-          />{' '}
+          />
+          {' '}
           {statLink !== undefined ? (
             <a href={statLink.href} className={classes.cardStatsLink}>
               {statLink.text}

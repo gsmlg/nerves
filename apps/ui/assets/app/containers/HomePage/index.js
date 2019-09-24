@@ -61,7 +61,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
           <div className={classes.map}>
             <h3>Code:</h3>
             <textarea className={classes.textarea} onInput={(evt) => writeCode(evt.target.value)} value={code} />
-            <br/>
+            <br />
             <Button onClick={runCode}>run</Button>
             <h3>Output:</h3>
             <pre className={classes.pre}>{output}</pre>

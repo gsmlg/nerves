@@ -1,4 +1,6 @@
-import { takeLatest, take, call, put, select } from 'redux-saga/effects';
+import {
+  takeLatest, take, call, put, select,
+} from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 import {
   INIT,

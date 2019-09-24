@@ -1,5 +1,7 @@
 import React from 'react';
-import { withStyles, FormControl, InputLabel, Input } from '@material-ui/core';
+import {
+  withStyles, FormControl, InputLabel, Input,
+} from '@material-ui/core';
 import { Clear, Check } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import cx from 'classnames';

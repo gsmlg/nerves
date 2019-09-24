@@ -12,9 +12,9 @@ function IconCustomButton({ ...props }) {
     <IconButton
       {...rest}
       className={
-        classes.button +
-        (color ? ` ${classes[color]}` : '') +
-        (customClass ? ` ${customClass}` : '')
+        classes.button
+        + (color ? ` ${classes[color]}` : '')
+        + (customClass ? ` ${customClass}` : '')
       }
     >
       {children}

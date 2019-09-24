@@ -37,12 +37,12 @@ function Snackbar({ ...props }) {
             : (place.indexOf('c') !== -1 ? 'center' : 'right'),
       }}
       open={open}
-      message={
+      message={(
         <div>
           {icon !== undefined ? <props.icon className={classes.icon} /> : null}
           <span className={messageClasses}>{message}</span>
         </div>
-      }
+      )}
       action={action}
       SnackbarContentProps={{
         classes: {

@@ -2,7 +2,9 @@
 // // // ProfileCard styles
 // #############################
 
-import { card, boxShadow, grayColor, defaultFont } from 'jss/dashboard';
+import {
+  card, boxShadow, grayColor, defaultFont,
+} from 'jss/dashboard';
 
 const profileCardStyle = {
   card: {

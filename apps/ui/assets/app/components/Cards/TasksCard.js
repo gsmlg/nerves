@@ -21,9 +21,11 @@ class TasksCard extends React.Component {
   state = {
     value: 0,
   };
+
   handleChange = (event, value) => {
     this.setState({ value });
   };
+
   render() {
     const { classes } = this.props;
     return (
@@ -35,7 +37,7 @@ class TasksCard extends React.Component {
             content: classes.cardHeaderContent,
           }}
           title="Tasks:"
-          action={
+          action={(
             <Tabs
               classes={{
                 flexContainer: classes.tabsContainer,
@@ -76,7 +78,7 @@ class TasksCard extends React.Component {
                 label="Server"
               />
             </Tabs>
-          }
+          )}
         />
         <CardContent>
           {this.state.value === 0 && (
