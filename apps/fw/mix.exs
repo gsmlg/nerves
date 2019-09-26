@@ -39,7 +39,7 @@ defmodule Fw.MixProject do
   defp deps do
     [
       {:nerves, "~> 1.0", runtime: false},
-      {:distillery, "~> 2.0-pre", override: true},
+      {:distillery, "~> 2.0", override: true},
       {:ui, in_umbrella: true},
       {:nerves_network, "~> 0.3"},
       {:nerves_network_interface, "~> 0.4"},
