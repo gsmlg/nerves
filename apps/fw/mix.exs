@@ -1,22 +1,35 @@
 defmodule Fw.MixProject do
   use Mix.Project
 
-  @target System.get_env("MIX_TARGET") || "host"
+  @app :fw
+  @all_targets [:rpi0, :rpi3, :rpi]
 
   def project do
     [
       app: :fw,
       version: "0.1.0",
-      elixir: "~> 1.4",
-      target: @target,
-      archives: [nerves_bootstrap: "~> 1.0"],
-      deps_path: "../../deps/#{@target}",
-      build_path: "../../_build/#{@target}",
+      elixir: "~> 1.8",
+      archives: [nerves_bootstrap: "~> 1.6"],
+      deps_path: "../../deps",
+      build_path: "../../_build",
       config_path: "../../config/config.exs",
-      lockfile: "../../mix.lock.#{@target}",
+      lockfile: "../../mix.lock",
       start_permanent: Mix.env() == :prod,
       aliases: [loadconfig: [&bootstrap/1]],
+      build_embedded: Mix.target() != :host,
+      releases: [{@app, release()}],
+      preferred_cli_target: [run: :host, test: :host],
       deps: deps()
+    ]
+  end
+
+  def release do
+    [
+      overwrite: true,
+      cookie: "#{@app}_cookie",
+      include_erts: &Nerves.Release.erts/0,
+      steps: [&Nerves.Release.init/1, :assemble],
+      strip_beams: Mix.env() == :prod
     ]
   end
 
@@ -38,25 +51,29 @@ defmodule Fw.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:nerves, "~> 1.0", runtime: false},
-      {:distillery, "~> 2.0", override: true},
+      {:nerves, "~> 1.5", runtime: false},
+      {:distillery, "~> 2.1"},
       {:ui, in_umbrella: true},
       {:nerves_network, "~> 0.3"},
       {:nerves_network_interface, "~> 0.4"},
       {:nerves_runtime_shell, "~> 0.1"},
-      {:shoehorn, "~> 0.3"},
+      {:shoehorn, "~> 0.6"},
       {:httpoison, "~> 1.0"},
       # {:dhcp_server, "~> 0.4"}
-    ] ++ deps(@target)
-  end
 
-  # Specify target specific dependencies
-  defp deps("host"), do: []
+      # Dependencies for all targets except :host
+      {:nerves_runtime, "~> 0.6", targets: @all_targets},
 
-  defp deps(target) do
-    [
-      {:nerves_runtime, "~> 0.6"}
-    ] ++ system(target)
+      # Dependencies for specific targets
+      {:nerves_system_rpi, "~> 1.5", runtime: false, targets: :rpi},
+      {:nerves_system_rpi0, "~> 1.5", runtime: false, targets: :rpi0},
+      {:nerves_system_rpi2, "~> 1.5", runtime: false, targets: :rpi2},
+      {:nerves_system_rpi3, "~> 1.5", runtime: false, targets: :rpi3},
+      {:nerves_system_rpi3a, "~> 1.5", runtime: false, targets: :rpi3a},
+      {:nerves_system_bbb, "~> 2.0", runtime: false, targets: :bbb},
+      {:nerves_system_x86_64, "~> 1.5", runtime: false, targets: :x86_64}
+
+    ]
   end
 
   defp system("rpi"), do: [{:nerves_system_rpi, "~> 1.0", runtime: false}]
