@@ -260,7 +260,7 @@
     "invariant": "2.2.4",
     "ip": "1.1.5",
     "lodash": "~4.17.15",
-    "minimist": "1.2.0",
+    "minimist": "1.2.2",
     "perfect-scrollbar": "^1.4.0",
     "phoenix": "^1.4.10",
     "prop-types": "15.7.2",
